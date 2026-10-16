@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İkra'nın Minik Aşk Dünyası 💗</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: linear-gradient(135deg, #fff0f5, #fce4ec, #f3e5f5);
+      color: #70445a;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: min(90%, 520px);
+      margin: 50px auto;
+      padding: 30px 22px;
+      background: rgba(255, 255, 255, 0.84);
+      border: 2px solid #f8c8dc;
+      border-radius: 28px;
+      box-shadow: 0 12px 35px #dba8c533;
+      position: relative;
+      z-index: 1;
+    }
+
+    .heart {
+      font-size: 55px;
+      animation: heartbeat 1.2s infinite;
+    }
+
+    h1 {
+      color: #d85c91;
+      font-size: clamp(27px, 6vw, 38px);
+      margin: 12px 0;
+    }
+
+    h2 {
+      color: #c75b8b;
+      font-size: 22px;
+    }
+
+    p {
+      line-height: 1.7;
+    }
+
+    .subtitle {
+      color: #9b7188;
+    }
+
+    .question {
+      margin-top: 26px;
+      padding: 20px 14px;
+      border-radius: 20px;
+      background: #fff2f7;
+    }
+
+    button {
+      border: 0;
+      border-radius: 30px;
+      padding: 13px 20px;
+      margin: 7px 4px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 12px #dba8c555;
+    }
+
+    .pink {
+      background: #f5a6c8;
+      color: #702c4b;
+    }
+
+    .purple {
+      background: #e4c9f5;
+      color: #654078;
+    }
+
+    .message {
+      display: none;
+      margin-top: 22px;
+      padding: 18px;
+      border-radius: 18px;
+      background: #fff0f5;
+      animation: appear 0.5s ease;
+    }
+
+    .counter {
+      margin-top: 24px;
+      padding: 14px;
+      border-radius: 16px;
+      background: #f9e7fa;
+      font-size: 14px;
+    }
+
+    .tiny {
+      font-size: 12px;
+      color: #aa8298;
+      margin-top: 24px;
+    }
+
+    .floating-heart {
+      position: fixed;
+      bottom: -40px;
+      pointer-events: none;
+      animation: floatUp 6s linear forwards;
+      z-index: 0;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.13); }
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatUp {
+      from { transform: translateY(0) rotate(0); opacity: 0.9; }
+      to { transform: translateY(-110vh) rotate(35deg); opacity: 0; }
+    }
+
+    @media (max-width: 420px) {
+      .container {
+        margin: 24px auto;
+        padding: 25px 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="container">
+    <div class="heart">💗</div>
+
+    <h1>Sevgilimin Aşk Dünyası</h1>
+    <p class="subtitle">
+      Bu minicik dünya sadece sana özel, güzelim 🎀
+    </p>
+
+    <section class="question">
+      <h2>💕 Sana bir sorum var...</h2>
+      <p><strong>Bu dünyadaki en tatlı kişi kim?</strong></p>
+
+      <button class="pink" onclick="answer('Sen tabii ki lenn! 🥹💗')">
+        sen misim? 🙈
+      </button>
+
+      <button class="purple" onclick="answer('Yanlış cevap kabul edilmiyor, sensin! 😂💕')">
+        Ben miyim? 👀
+      </button>
+
+      <div id="answer" class="message" aria-live="polite"></div>
+    </section>
+
+    <section class="question">
+      <h2>💌 Sana bir sürprizim var</h2>
+      <p>Kalbine küçük bir not bırakmış olabilirim...</p>
+      <button class="pink" onclick="openLetter()">
+        Mektubumu aç 💌
+      </button>
+
+      <div id="letter" class="message" aria-live="polite">
+        <h2>Canım Sevgilim 💗</h2>
+        <p>
+          Hayatıma girdiğin günden beri 
+          bazı şeyler eskisi gibi değil. Sanki dünya biraz daha güzel, 
+          günler biraz daha anlamlı, gülüşler biraz daha içten. 
+          Seninle konuşmak, sesini duymak, en sıradan anları bile seninle paylaşmak benim
+           için bambaşka bir mutluluk.
+        </p>
+        <p>
+          İyi ki hayatımdasın. Seni çok seviyorum! 🌷
+        </p>
+        <p>— Seni çok seven kişi  ❤️</p>
+      </div>
+    </section>
+
+    <div class="counter">
+      <strong>💞 Bizim hikâyemiz</strong>
+      <p id="days">Gün sayımız hesaplanıyor...</p>
+      <small>13 Nisan 2026'dan beri birlikte 💕</small>
+    </div>
+
+    <button class="purple" onclick="makeHearts()">
+      Biraz daha kalp! 💖
+    </button>
+
+    <p class="tiny">
+      Senin için sevgiyle kodlandı 🌸
+    </p>
+  </main>
+
+  <script>
+    function answer(message) {
+      const box = document.getElementById("answer");
+      box.textContent = message;
+      box.style.display = "block";
+      makeHearts();
+    }
+
+    function openLetter() {
+      const letter = document.getElementById("letter");
+      letter.style.display = "block";
+      makeHearts();
+    }
+
+    function updateDays() {
+      const start = new Date(2026, 3, 13);
+      const today = new Date();
+
+      start.setHours(0, 0, 0, 0);
+      today.setHours(0, 0, 0, 0);
+
+      const difference = Math.floor(
+        (today - start) / (1000 * 60 * 60 * 24)
+      );
+
+      const days = document.getElementById("days");
+
+      if (difference >= 0) {
+        days.textContent =
+          difference + " gündür birlikteyiz! 🥰";
+      } else {
+        days.textContent =
+          "Güzel hikâyemiz başlamak üzere! 💗";
+      }
+    }
+
+    function makeHearts() {
+      const symbols = ["💗", "💕", "💖", "🌸", "💘"];
+
+      for (let i = 0; i < 12; i++) {
+        const heart = document.createElement("span");
+        heart.className = "floating-heart";
+        heart.textContent =
+          symbols[Math.floor(Math.random() * symbols.length)];
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.fontSize = (18 + Math.random() * 22) + "px";
+        heart.style.animationDuration = (4 + Math.random() * 3) + "s";
+
+        document.body.appendChild(heart);
+
+        heart.addEventListener("animationend", () => {
+          heart.remove();
+        });
+      }
+    }
+
+    updateDays();
+    setInterval(makeHearts, 3500);
+  </script>
+</body>
+</html>
